@@ -17,7 +17,7 @@ class Config:
     
     # Keywords AI Gateway
     KEYWORDS_API_KEY = os.getenv('KEYWORDS_API_KEY')
-    KEYWORDS_API_URL = os.getenv('KEYWORDS_API_URL', 'https://api.keywords.ai/v1')
+    KEYWORDS_API_URL = os.getenv('KEYWORDS_API_URL', 'https://api.keywordsai.co/api')
     
     # LLM Configuration
     LLM_MODEL = os.getenv('LLM_MODEL', 'claude-3-sonnet')

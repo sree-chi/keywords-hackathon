@@ -12,8 +12,11 @@ class EmbeddingService:
     
     def __init__(self):
         # Initialize OpenAI client for embeddings
-        # Note: If Keywords Gateway supports embeddings, route through it
-        self.client = OpenAI()  # Will use OPENAI_API_KEY from environment
+        # Route through Keywords Gateway using its API key and base URL
+        self.client = OpenAI(
+            api_key=Config.KEYWORDS_API_KEY,
+            base_url=Config.KEYWORDS_API_URL
+        )
         self.model = Config.EMBEDDING_MODEL
     
     def embed_schema(self, schema: Dict[str, Any]) -> List[float]:

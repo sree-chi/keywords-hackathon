@@ -68,9 +68,6 @@ class ResearchAgent:
                 "text_length": len(full_text)
             })
             
-            # Store raw chunks in database
-            self._store_chunks(paper_id, chunks)
-            
             # Step B: Structural Abstraction
             print(f"[STEP B] Structural Abstraction for paper {paper_id}")
             abstraction_result = self.keywords_gateway.structural_abstraction(
@@ -106,6 +103,9 @@ class ResearchAgent:
                 schema=schema,
                 embedding=embedding
             )
+            
+            # Store raw chunks in database (must be after paper creation due to FK)
+            self._store_chunks(paper_id, chunks)
             
             trace["steps"].append({
                 "step": "embedding_storage",
